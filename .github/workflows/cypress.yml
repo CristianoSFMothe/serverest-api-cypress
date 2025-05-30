@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Copying the Project
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Install Dependencies
@@ -24,10 +24,10 @@ jobs:
           timeout 30s bash -c 'until curl -s http://localhost:3000/ > /dev/null; do sleep 1; done'
           echo "Serverest is ready!"
 
-      - name: Run Cypress Tests in Cloud
-        run: npm run test:cloud
+      - name: Run Cypress Tests Locally
+        run: npm run test
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CI: true
 
       - name: Upload screenshots on failure
         if: failure()
@@ -37,7 +37,7 @@ jobs:
           path: cypress/screenshots
           if-no-files-found: ignore
 
-      - name: Upload videos if successful
+      - name: Upload videos on success
         if: success()
         uses: actions/upload-artifact@v4
         with:
