@@ -11,6 +11,7 @@ module.exports = defineConfig({
     screenshotOnRunFailure: false,
     experimentalRunAllSpecs: true,
     video: false,
+    projectId: 'jxi5gr',
   },
   env: {
     allure: true,
