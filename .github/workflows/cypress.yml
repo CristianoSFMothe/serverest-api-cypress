@@ -24,10 +24,11 @@ jobs:
           timeout 30s bash -c 'until curl -s http://localhost:3000/ > /dev/null; do sleep 1; done'
           echo "Serverest is ready!"
 
-      - name: Run Cypress Tests Locally
-        run: npm run test
+      - name: Run Cypress Tests in Cloud
+        run: yarn test:cloud
         env:
           CI: true
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
       - name: Upload screenshots on failure
         if: failure()
