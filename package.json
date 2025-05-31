@@ -11,18 +11,23 @@
     "allure:serve": "npx allure serve",
     "lint": "eslint cypress/**/*.js && eslint cypress.config.js",
     "lint:fix": "eslint cypress/**/*.js --fix && eslint cypress.config.js --fix",
-    "serverest:start": "npx serverest@latest"
+    "serverest:start": "npx serverest@latest",
+    "test:tesults": "node runner.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "cypress": "^14.4.0",
+  "devDependencies": {
     "@mmisty/cypress-allure-adapter": "^3.2.3",
     "allure-commandline": "^2.34.0",
+    "cypress": "^14.4.0",
     "cypress-plugin-api": "^2.11.2",
+    "cypress-tesults-reporter": "1.2.0",
     "eslint": "^8.43.0",
     "eslint-plugin-cypress": "^2.13.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
   }
 }

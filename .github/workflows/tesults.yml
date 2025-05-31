@@ -1,0 +1,31 @@
+name: E2E Tests - Tesults
+
+on: [push]
+
+jobs:
+  tesults-run:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Start Serverest Service
+        run: npm run serverest:start &
+        env:
+          CI: true
+
+      - name: Wait for Serverest to be ready
+        run: |
+          echo "Waiting for Serverest to be ready..."
+          timeout 30s bash -c 'until curl -s http://localhost:3000/ > /dev/null; do sleep 1; done'
+          echo "Serverest is ready!"
+
+      - name: Run Cypress Tests with Tesults
+        run: yarn test:tesults
+        env:
+          CI: true
+          TESULTS_TOKEN: ${{ secrets.TESULTS_TOKEN }}
