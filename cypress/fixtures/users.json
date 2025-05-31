@@ -32,5 +32,59 @@
       "password": "Senha123",
       "administrador": "false"
     }
+  },
+  "delete": {
+    "success": {
+      "nome": "Bruno Santos",
+      "email": "brunosantos@email.com",
+      "password": "Senha456",
+      "administrador": "false"
+    }
+  },
+  "edit": {
+    "success": {
+      "create": {
+        "nome": "Joséphine de Bonaparte",
+        "email": "josephine@bonaparte.fr",
+        "password": "Imperatriz1804",
+        "administrador": "true"
+      },
+      "edition": {
+        "nome": "Joséphine de Beauharnais",
+        "email": "josephine@bonaparte.fr",
+        "password": "SenhaImperatriz1804",
+        "administrador": "false"
+      }
+    },
+    "not_found": {
+      "new_user": {
+        "nome": "Ana Clara",
+        "email": "anaclara@exemplo.com",
+        "password": "!SenhaComSimbolos123#",
+        "administrador": "false"
+      },
+      "duplicated": {
+        "nome": "Eduardo Fernandes",
+        "email": "eduardofernandes@email.com",
+        "password": "pwd123",
+        "administrador": "false"
+      }
+    },
+    "fail": {
+      "original": {
+        "nome": "Bruno Moura",
+        "email": "brunomoura@empresa.com.br",
+        "password": "Senha1234",
+        "administrador": "false"
+      },
+      "invalid": [
+        {
+          "nome": "Bruno Moura",
+          "email": "brunomoura@empresa.com.br",
+          "password": "SenhaComFrase&1234",
+          "administrador": "false"
+        }
+      ]
+    }
   }
 }

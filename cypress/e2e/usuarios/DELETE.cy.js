@@ -3,12 +3,12 @@ describe('DELETE /usuarios', () => {
 
   beforeEach(() => {
     cy.fixture('users').then((data) => {
-      userData = data.create
+      userData = data.delete
     })
   })
 
   it('deve deletar um usuário com sucesso', () => {
-    const user = userData.success.admin
+    const user = userData.success
 
     cy.deleteUser(user)
 
