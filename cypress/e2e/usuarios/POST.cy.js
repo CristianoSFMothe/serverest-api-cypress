@@ -7,15 +7,15 @@ describe('POST /usuarios', () => {
     })
   })
 
-  it('deve cadastrar um usuário administrador com sucesso', () => {
+  it('deve cadastrar usuário administrador com sucesso', () => {
     const user = userData.success.admin
+    cy.deleteUser(user)
 
     cy.insertUser(user).then((response) => {
-      const userId = response.body._id
-      Cypress.env('createdUserId', userId)
-      cy.log(`User ID criado: ${userId}`)
-      expect(response.status).to.eq(201)
-      expect(response.body.message).to.eq('Cadastro realizado com sucesso')
+      expect(response.status).to.equal(201)
+      expect(response.body.message)
+        .to.be
+        .equal('Cadastro realizado com sucesso')
     })
   })
 
@@ -34,7 +34,7 @@ describe('POST /usuarios', () => {
       })
     })
 
-    it.only('deve retornar erro ao tentar cadastrar um usuário sem informar o nome', () => {
+    it('deve retornar erro ao tentar cadastrar um usuário sem informar o nome', () => {
       const user = userData.invalid
 
       delete user.nome
@@ -45,7 +45,7 @@ describe('POST /usuarios', () => {
       })
     })
 
-    it.only('deve retornar erro ao tentar cadastrar um usuário sem informar o email', () => {
+    it('deve retornar erro ao tentar cadastrar um usuário sem informar o email', () => {
       const user = userData.invalid
 
       delete user.email
@@ -56,7 +56,7 @@ describe('POST /usuarios', () => {
       })
     })
 
-    it.only('deve retornar erro ao tentar cadastrar um usuário email inválido', () => {
+    it('deve retornar erro ao tentar cadastrar um usuário email inválido', () => {
       const user = userData.invalid_email
 
       cy.insertUser(user).then((response) => {
@@ -65,7 +65,7 @@ describe('POST /usuarios', () => {
       })
     })
 
-    it.only('deve retornar erro ao tentar cadastrar um usuário sem informar a senha', () => {
+    it('deve retornar erro ao tentar cadastrar um usuário sem informar a senha', () => {
       const user = userData.invalid
 
       delete user.password
@@ -76,7 +76,7 @@ describe('POST /usuarios', () => {
       })
     })
 
-    it.only('deve retornar erro ao tentar cadastrar um usuário sem informar o administrador', () => {
+    it('deve retornar erro ao tentar cadastrar um usuário sem informar o administrador', () => {
       const user = userData.invalid
 
       delete user.administrador
@@ -87,7 +87,7 @@ describe('POST /usuarios', () => {
       })
     })
 
-    it.only('deve retornar erro ao tentar cadastrar um usuário sem os campos obrigatórios', () => {
+    it('deve retornar erro ao tentar cadastrar um usuário sem os campos obrigatórios', () => {
       const user = userData.invalid
 
       delete user.nome
