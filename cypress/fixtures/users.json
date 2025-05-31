@@ -1,0 +1,36 @@
+{
+  "create": {
+    "success": {
+      "admin": {
+        "nome": "Cristiano Ferreira",
+        "email": "crisitano@qa.com.br",
+        "password": "Abc@123",
+        "administrador": "true"
+      },
+      "not_admin": {
+        "nome": "Aline Mothe",
+        "email": "aline@user.com.br",
+        "password": "Abc@123",
+        "administrador": "false"
+      }
+    },
+    "duplicated": {
+      "nome": "Mariana Silva",
+      "email": "marianasilva@email.com",
+      "password": "Senha123",
+      "administrador": "false"
+    },
+    "invalid": {
+      "nome": "Mariana Silva",
+      "email": "marianasilva@email.com",
+      "password": "Senha123",
+      "administrador": "false"
+    },
+    "invalid_email": {
+      "nome": "Maria Santos",
+      "email": "mariasantos@",
+      "password": "Senha123",
+      "administrador": "false"
+    }
+  }
+}
