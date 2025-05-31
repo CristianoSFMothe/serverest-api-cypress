@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const cypress = require('cypress')
 const tesults = require('cypress-tesults-reporter')
 
